@@ -60,4 +60,4 @@ Makefile is provided to build the Docker image.
 * *make* - This will build the Docker image locally.
 * *make push* - This will push the built Docker image to repo.
 Make sure to change the repo name to your repo in Makefile before 
-building and pushing (*DOCKER_REPO=**registry.danube.cf:5001**/concourse-email-notify*). 
+building and pushing (*DOCKER_REPO=***registry.danube.cf:5001***/concourse-email-notify*). 
