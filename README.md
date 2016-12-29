@@ -33,6 +33,7 @@ you would create those files dynamically from your specific task.
   when setting the pipeline in Concourse using *fly* command.
 * `credentials.yml`: This file containes the SMTP nd Git authentication details.
  Provide the correct values against the provided variables.
+ 
  ``` yaml
  smtp_user: "<smtp_user>"
  smtp_password: "<smtp_password>"
@@ -44,7 +45,8 @@ you would create those files dynamically from your specific task.
    -----END RSA PRIVATE KEY-----
  ```
  
- Once you update the files, you can set the pipeline in Concourse using following command,
+
+Once you update the files, you can set the pipeline in Concourse using following command,
  
 *fly -t <target> set-pipeline -p concourse-email-notification -c sample-pipeline.yml -l credentials.yml*
 
