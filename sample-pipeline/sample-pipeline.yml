@@ -1,0 +1,35 @@
+---
+# Jobs to be executed
+jobs:
+  - name: email-notification
+    public: true
+    serial: true
+    plan:
+      - get: my-git-project
+      - put: email-notify
+        params:
+          input_dir: my-git-project
+
+resources:
+  - name: my-git-project
+    type: git
+    source:
+      uri: <Specify-Git-URL-of-the-Project>
+      branch: master
+      private_key: {{github_key}}
+
+  - name: email-notify
+    type: email-notify-resource
+    source:
+      smtp_host: "<SMTP-Host>"
+      smtp_port: "<SMTP-Port>"
+      smtp_username: {{smtp_user}}
+      smtp_password: {{smtp_password}}
+      recepient: "<Recepient-Email-ID>"
+
+resource_types:
+  - name: email-notify-resource
+    type: docker-image
+    source:
+      repository: registry.danube.cf:5001/concourse-email-notify
+      tag: latest
