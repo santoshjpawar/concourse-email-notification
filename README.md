@@ -1,4 +1,4 @@
-# concourse-email-notify
+# concourse-email-notification
 Can be used to send HTML formatted email notifications from Concourse.CI build.
 
 Following are the required *source* values:
