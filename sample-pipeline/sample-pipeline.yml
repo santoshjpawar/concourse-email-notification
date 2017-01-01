@@ -31,5 +31,5 @@ resource_types:
   - name: email-notify-resource
     type: docker-image
     source:
-      repository: registry.danube.cf:5001/concourse-email-notify
+      repository: santoshjpawar/concourse-email-notification
       tag: latest
