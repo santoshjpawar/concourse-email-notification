@@ -25,7 +25,7 @@ if [[ -z $smtp_host ]] || [[ -z $smtp_port ]] || [[ -z $smtp_username ]] || [[ -
 fi
 
 # Read subject file
-subject=$(cat ${1}/${input_dir}/subject)
+subject=$(cat ${1}/${input_dir}/pretext)
 
 # Create message body file
 echo $email_body > /tmp/body

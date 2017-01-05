@@ -18,7 +18,7 @@ Following are the *param* values
 * `email_body` - Email body in HTML format. There can be placeholders which will be 
 replaced by the values in output file *replacements* as explained below.
 * `input_dir` - Directory name under the incoming project artifacts directory where the following files can be found:
-  * `subject` - File containing a line of text to be used in email subject.
+  * `pretext` - File containing a line of text to be used in email subject.
   * `body` - File containing a messsage body (can be in HTML format).
   * `author` (optional) - File containing list of recepient email addresses 
   separated with comma and a space. For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*.
