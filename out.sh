@@ -30,12 +30,22 @@ subject=$(cat ${1}/${input_dir}/subject)
 # Create message body file
 echo $email_body > /tmp/body
 
+# Replace the strings if required
+if [ -f ${1}/${input_dir}/replacements ]; then
+    while read -r line
+    do
+        key=`echo $line | cut -d '=' -f 1`
+        val=`echo $line | cut -d '=' -f 2`
+        sed -i "s/$key/$val/g" /tmp/body
+    done < ${1}/${input_dir}/replacements
+fi
+
 # Add Concourse CI build URL at the end of the email body
 EMAIL_BUILD_URL="${ATC_EXTERNAL_URL}/builds/${BUILD_ID}"
 echo "</br></br>" >> /tmp/body
 echo "Concourse build URL: $EMAIL_BUILD_URL" >> /tmp/body
 
-# Check if file named 'to' is available. If yes, then override the 'recepient' from source param
+# Check if file named 'to' is available. If yes, then override the recipients from source param
 if [ -f ${1}/${input_dir}/to ]; then
 	recepient=$(cat ${1}/${input_dir}/to)
 	echo "File 'to' found, overriding recepients to - $recepient"
