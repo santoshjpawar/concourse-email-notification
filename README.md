@@ -28,6 +28,9 @@ replaced by the values in output file *replacements* as explained below.
   and `Status - STATUS`, there should be file *replacements* created in the incoming
   directory with lines as `PROJECT_NAME=My-Project` and `STATUS=Success`. So the resultant email will 
   have lines as `Project - My-Project` and `Status - Success`.
+  
+  **Note:** When multiple email addresses are provided in `default_recipient` paror `author` file,
+  email will be sent with first email address in *To* and all other in *Bcc*. 
 
 ### Sample pipeline
 Check an example pipeline from `sample-pipeline` directory.
