@@ -45,10 +45,10 @@ EMAIL_BUILD_URL="${ATC_EXTERNAL_URL}/builds/${BUILD_ID}"
 echo "</br></br>" >> /tmp/body
 echo "Concourse build URL: $EMAIL_BUILD_URL" >> /tmp/body
 
-# Check if file named 'to' is available. If yes, then override the recipients from source param
-if [ -f ${1}/${input_dir}/to ]; then
-	recepient=$(cat ${1}/${input_dir}/to)
-	echo "File 'to' found, overriding recepients to - $recepient"
+# Check if file named 'author' is available. If yes, then override the recipients from source param
+if [ -f ${1}/${input_dir}/author ]; then
+	recepient=$(cat ${1}/${input_dir}/author)
+	echo "File 'author' found, overriding recepients to - $recepient"
 fi
 
 on_success="$(jq -rcM '.params.on_success // "false"' < "${payload}")"

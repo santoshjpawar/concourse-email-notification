@@ -9,18 +9,18 @@ For example, *587*
 * `smtp_username` - SMTP user name.
 * `smtp_password` - SMTP user password.
 * `default_recepient` - Email address to send the notifications to. You can
-provide multiple email addresses separated with comma and a space''.
+provide multiple email addresses separated with comma and a space.
 For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*
 This param will be ignored if the input directory contains file named
-`to`.
+`author`.
 
 Following are the required *param* values
 * `input_dir` - Directory name under the incoming project artifacts directory where the following files can be found:
   * `subject` - File containing a line of text to be used in email subject.
   * `body` - File containing a messsage body (can be in HTML format).
-  * `to` (optional) - File containing list of recepient email addresses 
-  separated by semicolons. If this file exists, then source param 
-  `recepient` will be ignored.
+  * `author` (optional) - File containing list of recepient email addresses 
+  separated with comma and a space. For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*.
+  If this file exists, then source param `default_recepient` will be ignored.
 
 ### Sample pipeline
 Check an example pipeline from `sample-pipeline` directory.
