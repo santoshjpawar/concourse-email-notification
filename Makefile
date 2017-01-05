@@ -1,5 +1,5 @@
 DOCKER_TAG?=latest
-DOCKER_REPO=registry.danube.cf:5001/concourse-email-notify
+DOCKER_REPO=santoshjpawar/concourse-email-notification
 
 default:
 	docker build -t $(DOCKER_REPO):$(DOCKER_TAG) .
