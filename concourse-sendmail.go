@@ -21,7 +21,7 @@ func main() {
 	flag.StringVar(&msgFile, "msgFile", "/tmp/body", "File path containing email body")
 	flag.Parse()
 
-	sArr := strings.Split(recepient, ";")
+	sArr := strings.Split(recepient, ", ")
 	firstEmail := sArr[0]
 
 	log.Println("EmailId: " + emailId)

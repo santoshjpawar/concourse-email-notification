@@ -6,9 +6,10 @@ jobs:
     serial: true
     plan:
       - get: my-git-project
-      - put: email-notify
+      - put: email-notification
         params:
           input_dir: my-git-project
+          email_body: {{email_body}}
 
 resources:
   - name: my-git-project
@@ -18,17 +19,17 @@ resources:
       branch: master
       private_key: {{github_key}}
 
-  - name: email-notify
-    type: email-notify-resource
+  - name: email-notification
+    type: email-notification-resource
     source:
       smtp_host: "<SMTP-Host>"
       smtp_port: "<SMTP-Port>"
       smtp_username: {{smtp_user}}
       smtp_password: {{smtp_password}}
-      recepient: "<Recepient-Email-ID>"
+      default_recipient: "<Default-Recepient-Email-ID>"
 
 resource_types:
-  - name: email-notify-resource
+  - name: email-notification-resource
     type: docker-image
     source:
       repository: santoshjpawar/concourse-email-notification

@@ -8,9 +8,9 @@ For example, *smtp.gmail.com*
 For example, *587*
 * `smtp_username` - SMTP user name.
 * `smtp_password` - SMTP user password.
-* `recepient` - Email address to send the notifications to. You can
-provide multiple email addresses separated with semicolon.
-For example, *user1@domain1.com;user2@domain1.com;user3@domain2.com*
+* `default_recepient` - Email address to send the notifications to. You can
+provide multiple email addresses separated with comma and a space''.
+For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*
 This param will be ignored if the input directory contains file named
 `to`.
 
