@@ -43,7 +43,7 @@ fi
 # Add Concourse CI build URL at the end of the email body
 EMAIL_BUILD_URL="${ATC_EXTERNAL_URL}/builds/${BUILD_ID}"
 echo "</br></br>" >> /tmp/body
-echo "Concourse build URL: $EMAIL_BUILD_URL" >> /tmp/body
+echo "<p style=\"font-family:verdana;font-size:13\">Concourse build URL: $EMAIL_BUILD_URL </p>" >> /tmp/body
 
 # Check if file named 'author' is available. If yes, then override the recipients from source param
 if [ -f ${1}/${input_dir}/author ]; then

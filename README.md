@@ -1,7 +1,7 @@
 # concourse-email-notification
 Can be used to send HTML formatted email notifications from Concourse.CI build.
 
-Following are the required *source* values:
+Following are the *source* values:
 * `smtp_host` - SMTP host that you want to use to send email notifications.
 For example, *smtp.gmail.com*
 * `smtp_port` - SMTP server port to use.
@@ -14,13 +14,20 @@ For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*
 This param will be ignored if the input directory contains file named
 `author`.
 
-Following are the required *param* values
+Following are the *param* values
+* `email_body` - Email body in HTML format. There can be placeholders which will be 
+replaced by the values in output file *replacements* as explained below.
 * `input_dir` - Directory name under the incoming project artifacts directory where the following files can be found:
   * `subject` - File containing a line of text to be used in email subject.
   * `body` - File containing a messsage body (can be in HTML format).
   * `author` (optional) - File containing list of recepient email addresses 
   separated with comma and a space. For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*.
   If this file exists, then source param `default_recepient` will be ignored.
+  * `replacements` (optional) - File containing list of key/value pairs to be replaced in message body.
+  For example, if message body contains a lines `Project - PROJECT_NAME`
+  and `Status - STATUS`, there should be file *replacements* created in the incoming
+  directory with lines as `PROJECT_NAME=My-Project` and `STATUS=Success`. So the resultant email will 
+  have lines as `Project - My-Project` and `Status - Success`.
 
 ### Sample pipeline
 Check an example pipeline from `sample-pipeline` directory.
