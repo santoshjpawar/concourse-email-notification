@@ -24,6 +24,12 @@ if [[ -z $smtp_host ]] || [[ -z $smtp_port ]] || [[ -z $smtp_username ]] || [[ -
 	exit 1
 fi
 
+# Set default email body if not provided
+if [[ -z $email_body ]]; then
+	echo "Setting default email body."
+	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br></br> The build <b>${BUILD_ID}</b> was a success/failure.</br> Please refer the Concourse build link at the bottom of this email for more details.</br> </br> Thanks</br></p> </body> </html>"
+fi
+
 # Read subject file
 subject=$(cat ${1}/${input_dir}/pretext)
 
@@ -50,12 +56,6 @@ if [ -f ${1}/${input_dir}/author ]; then
 	recepient=$(cat ${1}/${input_dir}/author)
 	echo "File 'author' found, overriding recepients to - $recepient"
 fi
-
-on_success="$(jq -rcM '.params.on_success // "false"' < "${payload}")"
-on_failure="$(jq -rcM '.params.on_failure // "false"' < "${payload}")"
-
-echo "on_success: $on_success"
-echo "on_failure: $on_failure"
 
 # Send email notification
 /opt/resource/concourse-sendmail -emailId="$smtp_username" -password="$smtp_password" -smtpServer="$smtp_host" -smtpPort="$smtp_port" -recepient="$recepient" -subject="$subject"
