@@ -18,6 +18,12 @@ recepient="$(jq -rcM '.source.default_recepient' < "${payload}")"
 input_dir="$(jq -rcM '.params.input_dir' < "${payload}")"
 email_body="$(jq -rcM '.params.email_body' < "${payload}")"
 
+echo "smtp_host: $smtp_host"
+echo "smtp_port: $smtp_port"
+echo "recepient: $recepient"
+echo "input_dir: $input_dir"
+echo "email_body: $email_body"
+
 # Check if all values are set
 if [[ -z $smtp_host ]] || [[ -z $smtp_port ]] || [[ -z $smtp_username ]] || [[ -z $smtp_password ]] || [[ -z $recepient ]] || [[ -z $input_dir ]]; then
 	echo "Missing parameters in resource. Make sure you have defined all required parameters on this resource."
