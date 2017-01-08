@@ -52,7 +52,7 @@ if [ -f ${1}/${input_dir}/author ]; then
 fi
 
 on_success="$(jq -rcM '.params.on_success // "false"' < "${payload}")"
-on_failure="$(jq -rcM '.params.on_failure // "true"' < "${payload}")"
+on_failure="$(jq -rcM '.params.on_failure // "false"' < "${payload}")"
 
 echo "on_success: $on_success"
 echo "on_failure: $on_failure"
