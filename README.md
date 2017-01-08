@@ -15,8 +15,6 @@ This param will be ignored if the input directory contains file named
 `author`. See below for more details on file `author`.
 
 Following are the *param* values
-* `email_body` - Email body in HTML format. There can be placeholders which will be 
-replaced by the values in output file *replacements* as explained below.
 * `input_dir` - Directory name under the incoming project artifacts directory where the following files can be found:
   * `pretext` - File containing a line of text to be used in email subject.
   * `author` (optional) - File containing list of recepient email addresses 
@@ -26,10 +24,13 @@ replaced by the values in output file *replacements* as explained below.
   For example, if message body (param `email_body`) contains lines `Project - PROJECT_NAME`
   and `Status - STATUS`, there could be a file *replacements* created in the incoming
   directory with lines `PROJECT_NAME=My-Project` and `STATUS=Success`. So the resultant email will 
-  have lines as `Project - My-Project` and `Status - Success`.
-  
-  **Note:** When multiple email addresses are provided in `default_recipient` param or in the `author` file,
-  email will be sent with first email address in *To* and all other in *Bcc*. 
+  have lines as `Project - My-Project` and `Status - Success`. 
+* `email_body` (optional) - Email body in HTML format. There can be placeholders which will be 
+replaced by the values in output file *replacements* as explained below.
+If not set, resource will send email with default message.
+
+**Note:** When multiple email addresses are provided in `default_recipient` param or in the `author` file,
+email will be sent with first email address in *To* field and all other in addresses in *Bcc* field.
 
 ### Sample pipeline
 Check an example pipeline from `sample-pipeline` directory.
