@@ -25,7 +25,7 @@ echo "input_dir: $input_dir"
 echo "email_body: $email_body"
 
 # Check if all values are set
-if [[ -z $smtp_host ]] || [[ -z $smtp_port ]] || [[ -z $smtp_username ]] || [[ -z $smtp_password ]] || [[ -z $recepient ]] || [[ -z $input_dir ]]; then
+if [[ -z $smtp_host ]] || [[ $smtp_host == "null" ]] || [[ -z $smtp_port ]] || [[ $smtp_port == "null" ]] || [[ -z $smtp_username ]] || [[ $smtp_username == "null" ]] || [[ -z $smtp_password ]] || [[ $smtp_password == "null" ]] || [[ -z $recepient ]] || [[ $recepient == "null" ]] || [[ -z $input_dir ]] || [[ $input_dir == "null" ]]; then
 	echo "Missing parameters in resource. Make sure you have defined all required parameters on this resource."
 	exit 1
 fi
