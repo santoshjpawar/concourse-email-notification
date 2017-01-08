@@ -1,0 +1,9 @@
+script:
+  - make
+  - make push
+notifications:
+  email:
+    recipients:
+      - psantosh@us.ibm.com
+    on_success: change
+    on_failure: always

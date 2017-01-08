@@ -19,7 +19,7 @@ input_dir="$(jq -rcM '.params.input_dir' < "${payload}")"
 email_body="$(jq -rcM '.params.email_body' < "${payload}")"
 
 # Check if all values are set
-if [[ -z $smtp_host ]] || [[ -z $smtp_port ]] || [[ -z $smtp_username ]] || [[ -z $smtp_password ]] || [[ -z $recepient ]] || [[ -z $input_dir ]] || [[ -z $email_body ]]; then
+if [[ -z $smtp_host ]] || [[ -z $smtp_port ]] || [[ -z $smtp_username ]] || [[ -z $smtp_password ]] || [[ -z $recepient ]] || [[ -z $input_dir ]]; then
 	echo "Missing parameters in resource. Make sure you have defined all required parameters on this resource."
 	exit 1
 fi
@@ -53,6 +53,9 @@ fi
 
 on_success="$(jq -rcM '.params.on_success // "false"' < "${payload}")"
 on_failure="$(jq -rcM '.params.on_failure // "true"' < "${payload}")"
+
+echo "on_success: $on_success"
+echo "on_failure: $on_failure"
 
 # Send email notification
 /opt/resource/concourse-sendmail -emailId="$smtp_username" -password="$smtp_password" -smtpServer="$smtp_host" -smtpPort="$smtp_port" -recepient="$recepient" -subject="$subject"
