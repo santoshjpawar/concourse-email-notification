@@ -34,7 +34,17 @@ fi
 # Set default email body if not provided
 if [[ -z $email_body ]] || [[ $email_body == "null" ]]; then
 	echo "Setting default email body."
-	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br></br> The build <b>${BUILD_ID}</b> was a success/failure.</br> Please refer the Concourse build link at the bottom of this email for more details.</br> </br> Thanks</br></p> </body> </html>"
+	build_status=completed
+	if [ -f ${1}/${input_dir}/color ]; then
+	    color=`cat ${1}/${input_dir}/color`
+	    if [ $color == "good" ]; then
+	        build_status=successful
+	    else
+	        if [ $color == "danger" ]; then
+	            build_status=failed
+	    fi
+	    email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br></br> The build <b>${BUILD_ID}</b> was ${build_status}.</br> Please refer the Concourse build link at the bottom of this email for more details.</br> </br> Thanks</br></p> </body> </html>"
+	fi
 fi
 
 # Read subject file
