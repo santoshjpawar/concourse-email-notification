@@ -17,6 +17,9 @@ This param will be ignored if the input directory contains file named
 Following are the *param* values
 * `input_dir` - Directory name under the incoming project artifacts directory where the following files can be found:
   * `pretext` - File containing a line of text to be used in email subject.
+  * `color` (optional) - File containing text either `good` or `danger`. This text will be used
+  to determine if current Concourse build is successful or not. Email message will be formatted
+  based on that.
   * `author` (optional) - File containing list of recepient email addresses 
   separated with comma and a space. For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*.
   If this file exists, then source param `default_recepient` will be ignored.
