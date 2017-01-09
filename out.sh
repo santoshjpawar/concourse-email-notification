@@ -38,10 +38,10 @@ if [[ -z $email_body ]] || [[ $email_body == "null" ]]; then
 	if [ -f ${1}/${input_dir}/color ]; then
 	    color=`cat ${1}/${input_dir}/color`
 	    if [ $color == "good" ]; then
-	        build_status=successful
+	        build_status="<font color=\"green\">successful</font>"
 	    else
 	        if [ $color == "danger" ]; then
-	            build_status=failed
+	            build_status="<font color=\"red\">failed</font>"
 	         fi
 	    fi
 	fi
