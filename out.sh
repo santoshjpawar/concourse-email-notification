@@ -48,11 +48,11 @@ if [[ -z $email_body ]] || [[ $email_body == "null" ]]; then
 	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br></br>"
 	if [ -f ${1}/${input_dir}/project ]; then
 	    project=`cat ${1}/${input_dir}/project`
-	    email_body="${email_body} Project- ${project}</br>"
+	    email_body="${email_body} <b>Project-</b> ${project}</br>"
 	fi
 	if [ -f ${1}/${input_dir}/branch ]; then
 	    branch=`cat ${1}/${input_dir}/branch`
-	    email_body="${email_body} Branch- ${branch}</br>"
+	    email_body="${email_body} <b>Branch-</b> ${branch}</br>"
 	fi
 	email_body="$email_body The build <b>${BUILD_ID}</b> was ${build_status}.</br> Please refer the Concourse build link at the bottom of this email for more details.</br> </br> Thanks</p> </body> </html>"
 fi
