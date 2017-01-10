@@ -45,7 +45,7 @@ if [[ -z $email_body ]] || [[ $email_body == "null" ]]; then
 	         fi
 	    fi
 	fi
-	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br><"
+	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br>"
 	if [ -f ${1}/${input_dir}/project ]; then
 	    project=`cat ${1}/${input_dir}/project`
 	    email_body="${email_body} </br><b>Project-</b> ${project}"
