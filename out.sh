@@ -45,16 +45,16 @@ if [[ -z $email_body ]] || [[ $email_body == "null" ]]; then
 	         fi
 	    fi
 	fi
-	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br></br>"
+	email_body="<html> <body> <p style=\"font-family:verdana;font-size:13\"> Hello,</br></br></p>"
 	if [ -f ${1}/${input_dir}/project ]; then
 	    project=`cat ${1}/${input_dir}/project`
-	    email_body="${email_body} <b>Project-</b> ${project}</br>"
+	    email_body="${email_body} </br><b>Project-</b> ${project}"
 	fi
 	if [ -f ${1}/${input_dir}/branch ]; then
 	    branch=`cat ${1}/${input_dir}/branch`
-	    email_body="${email_body} <b>Branch-</b> ${branch}</br>"
+	    email_body="${email_body} </br><b>Branch-</b> ${branch}"
 	fi
-	email_body="$email_body The build <b>${BUILD_ID}</b> was ${build_status}.</br> Please refer the Concourse build link at the bottom of this email for more details.</br> </br> Thanks</p> </body> </html>"
+	email_body="$email_body <p style=\"font-family:verdana;font-size:13\">The build <b>${BUILD_ID}</b> was ${build_status}.</br> Please refer the Concourse build link at the bottom of this email for more details.</br> </br> Thanks</p> </body> </html>"
 fi
 
 # Read subject file
