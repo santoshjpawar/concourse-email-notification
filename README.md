@@ -83,13 +83,12 @@ Makefile is provided to build the Docker image.
 
 * *make* - This will build the Docker image locally.
 * *make push* - This will push the built Docker image to repo.
-Make sure to change the repo name to your repo in Makefile before 
+Make sure to change the repo name to your repo in Makoefile before 
 building and pushing (*DOCKER_REPO=***santoshjpawar***/concourse-email-notification*). 
 
 ## Authorize the device
-Gmail blocks the unknown device used to send the email. When sending an email from any new device, you will get an error like this..
+Gmail blocks the unknown device used to send the email. When sending an email from any new device, you will get an error something like this...
 ```
-Error
+534-5.7.14 Please log in via your web browser and 534-5.7.14 then try again. 534-5.7.14 Learn more at 534 5.7.14 https://support.google.com/mail/answer/78754 hw7sm51688135pac.12 - gsmtp 
 ```
-
-You may need to authorize the device by logging into the account 
+In that case, you may need to authorize the device by logging into the Google account. 
