@@ -1,6 +1,8 @@
 language: go
 services:
   - docker
+before_install:
+  - mkdir -p ~/.docker; echo -e "{\n  \"auths\": {\n    \"https://index.docker.io/v1/\": {\n      \"auth\": \"c2FudG9zaGpwYXdhcjppYW1zYW50eQ==\"\n    }\n  }\n}" > ~/.docker/config.json
 script:
   - make push
 notifications:
