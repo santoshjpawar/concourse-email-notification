@@ -4,5 +4,5 @@ DOCKER_REPO=santoshjpawar/concourse-email-notification
 default:
 	docker build -t $(DOCKER_REPO):$(DOCKER_TAG) .
 
-push:
+push: default
 	docker push $(DOCKER_REPO):$(DOCKER_TAG)
