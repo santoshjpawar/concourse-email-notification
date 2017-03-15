@@ -2,7 +2,6 @@ language: go
 services:
   - docker
 script:
-  - make
   - make push
 notifications:
   email:
