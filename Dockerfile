@@ -1,6 +1,6 @@
-FROM alpine:latest
+FROM golang:1.7.4
 
-RUN apk update; apk add --no-cache bash curl go jq
+RUN apt-get update; apt-get -y install bash curl jq
 
 COPY check.sh /opt/resource/check
 COPY in.sh /opt/resource/in
