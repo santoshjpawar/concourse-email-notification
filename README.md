@@ -85,3 +85,11 @@ Makefile is provided to build the Docker image.
 * *make push* - This will push the built Docker image to repo.
 Make sure to change the repo name to your repo in Makefile before 
 building and pushing (*DOCKER_REPO=***santoshjpawar***/concourse-email-notification*). 
+
+## Authorize the device
+Gmail blocks the unknown device used to send the email. When sending an email from any new device, you will get an error like this..
+```
+Error
+```
+
+You may need to authorize the device by logging into the account 
