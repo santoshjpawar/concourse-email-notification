@@ -2,10 +2,8 @@
 Can be used to send HTML formatted email notifications from Concourse.CI build.
 
 Following are the *source* values:
-* `smtp_host` - SMTP host that you want to use to send email notifications.
-For example, *smtp.gmail.com*
-* `smtp_port` - SMTP server port to use.
-For example, *587*
+* `smtp_host` - SMTP host that you want to use to send email notifications. Default is *smtp.gmail.com*
+* `smtp_port` - SMTP server port to use. Default is *587*
 * `smtp_username` - SMTP user name.
 * `smtp_password` - SMTP user password.
 * `default_recepient` - Email address to send the notifications to. You can
