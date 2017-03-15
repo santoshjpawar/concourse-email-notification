@@ -81,8 +81,7 @@ Then unpause the pipeline from Concourse UI or by executing following command,
 ## Building docker image
 Makefile is provided to build the Docker image.
 
-* *make* - This will build the Docker image locally.
-* *make push* - This will push the built Docker image to repo.
+* *make push* - This will build the Docker image and push it to Docker registry.
 Make sure to change the repo name to your repo in Makefile before 
 building and pushing. 
 
