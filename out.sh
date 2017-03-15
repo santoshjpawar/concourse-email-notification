@@ -10,23 +10,23 @@ payload=$(mktemp /tmp/resource-in.XXXXXX)
 cat > "${payload}" <&0
 
 # Read param values
-smtp_host="$(jq -rcM '.source.smtp_host' < "${payload}")"
-smtp_port="$(jq -rcM '.source.smtp_port' < "${payload}")"
+smtp_host="$(jq -rcM '.source.smtp_host // "smtp.gmail.com"' < "${payload}")"
+smtp_port="$(jq -rcM '.source.smtp_port // "587"' < "${payload}")"
 smtp_username="$(jq -rcM '.source.smtp_username' < "${payload}")"
 smtp_password="$(jq -rcM '.source.smtp_password' < "${payload}")"
 recepient="$(jq -rcM '.source.default_recipient' < "${payload}")"
 input_dir="$(jq -rcM '.params.input_dir' < "${payload}")"
 email_body="$(jq -rcM '.params.email_body' < "${payload}")"
 
-echo "smtp_host: $smtp_host"
-echo "smtp_port: $smtp_port"
-echo "smtp_username: $smtp_username"
-echo "recepient: $recepient"
-echo "input_dir: $input_dir"
-echo "email_body: $email_body"
+echo "Param smtp_host: $smtp_host"
+echo "Param smtp_port: $smtp_port"
+echo "Param smtp_username: $smtp_username"
+echo "Param recepient: $recepient"
+echo "Param input_dir: $input_dir"
+echo "Param email_body: $email_body"
 
 # Check if all values are set
-if [[ -z $smtp_host ]] || [[ $smtp_host == "null" ]] || [[ -z $smtp_port ]] || [[ $smtp_port == "null" ]] || [[ -z $smtp_username ]] || [[ $smtp_username == "null" ]] || [[ -z $smtp_password ]] || [[ $smtp_password == "null" ]] || [[ -z $recepient ]] || [[ $recepient == "null" ]] || [[ -z $input_dir ]] || [[ $input_dir == "null" ]]; then
+if [[ -z $smtp_username ]] || [[ $smtp_username == "null" ]] || [[ -z $smtp_password ]] || [[ $smtp_password == "null" ]] || [[ -z $recepient ]] || [[ $recepient == "null" ]] || [[ -z $input_dir ]] || [[ $input_dir == "null" ]]; then
 	echo "Missing parameters in resource. Make sure you have defined all required parameters on this resource."
 	exit 1
 fi
