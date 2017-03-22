@@ -7,19 +7,18 @@ Following are the *source* values:
 * `smtp_username` - SMTP user name.
 * `smtp_password` - SMTP user password.
 * `default_recepient` - Email address to send the notifications to. You can
-provide multiple email addresses separated with comma and a space.
+provide multiple email addresses separated with _comma_ and _space_.
 For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*
 This param will be ignored if the input directory contains file named
 `author`. See below for more details on file `author`.
 
 Following are the *param* values
-* `input_dir` - Directory name under the incoming project artifacts directory where the following files can be found:
-  * `pretext` - File containing a line of text to be used in email subject.
-  * `color` (optional) - File containing text either `good` or `danger`. This text will be used
-  to determine if current Concourse build is successful or not. Email message will be formatted
+* `input_dir` - Directory name under the incoming project artifacts directory where the following files can be placed:
+  * `pretext` - File containing a line of text to be used as email subject.
+  * `color` (optional) - File containing text either `good` or `warning` or `danger` or any hex color code (eg. `#439FE0`). This text will be used to determine if current Concourse build is successful or not. Email message will be formatted
   based on that.
   * `author` (optional) - File containing list of recepient email addresses 
-  separated with comma and a space. For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*.
+  separated with _comma_ and _space_. For example, *user1@domain1.com, user2@domain1.com, user3@domain2.com*.
   If this file exists, then source param `default_recepient` will be ignored.
   * `replacements` (optional) - File containing list of key/value pairs to be replaced in message body.
   For example, if message body (param `email_body`) contains lines `Project - PROJECT_NAME`
@@ -27,11 +26,11 @@ Following are the *param* values
   directory with lines `PROJECT_NAME=My-Project` and `STATUS=Success`. So the resultant email will 
   have lines as `Project - My-Project` and `Status - Success`. 
 * `email_body` (optional) - Email body in HTML format. There can be placeholders which will be 
-replaced by the values in output file *replacements* as explained below.
+replaced by the values in output file *replacements* as explained above.
 If not set, resource will send email with default message.
 
 **Note:** When multiple email addresses are provided in `default_recipient` param or in the `author` file,
-email will be sent with first email address in *To* field and all other in addresses in *Bcc* field.
+email will be sent with first email address as *To* and all email addresses as *Bcc*.
 
 ### Sample pipeline
 Check an example pipeline from `sample-pipeline` directory.
@@ -79,10 +78,10 @@ Then unpause the pipeline from Concourse UI or by executing following command,
 *fly -t <target> unpause-pipeline -p concourse-email-notification*
 
 ## Building docker image
-Makefile is provided to build the Docker image.
+Makefile is provided to build the Docker image with following _targets_.
 
 * *make push* - This will build the Docker image and push it to Docker registry.
-Make sure to change the repo name to your repo in Makefile before 
+Make sure to change the repo name to your repo in _Makefile_ before 
 building and pushing. 
 
 ## Authorize the device
