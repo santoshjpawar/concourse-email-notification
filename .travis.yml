@@ -1,0 +1,4 @@
+language: bash
+
+before_install:
+  - echo -e "machine github.com\n  login b365eb1d26d396c7d774b5cd476defcea060e296\n  password x-oauth-basic\n  protocol https" >> ~/.netrc
