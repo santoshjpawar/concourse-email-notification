@@ -8,5 +8,4 @@ before_install:
   - docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
 
 script:
-  - make
   - make push
