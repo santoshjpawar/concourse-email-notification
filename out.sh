@@ -10,13 +10,13 @@ payload=$(mktemp /tmp/resource-in.XXXXXX)
 cat > "${payload}" <&0
 
 # Read param values
-smtp_host="$(jq -rcM '.source.smtp_host // "smtp.gmail.com"' < "${payload}")"
-smtp_port="$(jq -rcM '.source.smtp_port // "587"' < "${payload}")"
-smtp_username="$(jq -rcM '.source.smtp_username' < "${payload}")"
-smtp_password="$(jq -rcM '.source.smtp_password' < "${payload}")"
-recepient="$(jq -rcM '.source.default_recipient' < "${payload}")"
-input_dir="$(jq -rcM '.params.input_dir' < "${payload}")"
-email_body="$(jq -rcM '.params.email_body' < "${payload}")"
+smtp_host="$(jq -r -c -M '.source.smtp_host // "smtp.gmail.com"' < "${payload}")"
+smtp_port="$(jq -r -c -M '.source.smtp_port // "587"' < "${payload}")"
+smtp_username="$(jq -r -c -M '.source.smtp_username' < "${payload}")"
+smtp_password="$(jq -r -c -M '.source.smtp_password' < "${payload}")"
+recepient="$(jq -r -c -M '.source.default_recipient' < "${payload}")"
+input_dir="$(jq -r -c -M '.params.input_dir' < "${payload}")"
+email_body="$(jq -r -c -M '.params.email_body' < "${payload}")"
 
 echo "Param smtp_host: $smtp_host"
 echo "Param smtp_port: $smtp_port"
